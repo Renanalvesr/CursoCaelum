@@ -30,7 +30,7 @@ public class NewReplayMailFactory {
 	                getFormattedCreationTime(answer));
 	        thymeleafContext.setVariable("answerContent", answer.getContent());
 	        
-	        return this.templateEngine.process("email-template.html", thymeleafContext)
+	        return this.templateEngine.process("email-template.html", thymeleafContext);
 	}
 	private String getFormattedCreationTime(Answer answer) {
 		return DateTimeFormatter.ofPattern("kk:mm")

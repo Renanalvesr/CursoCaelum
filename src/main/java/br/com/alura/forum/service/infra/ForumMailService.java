@@ -45,6 +45,7 @@ public class ForumMailService {
 		
 		try {
 			mailSender.send(messagePreparator);
+			logger.error("Enviou o e-mail para"+ answer.getTopic().getOwnerEmail());
 		}catch (MailException e) {
 			logger.error("Não foi possivel enviar email para " + answer.getTopic()
 			.getOwnerEmail(), e.getMessage());

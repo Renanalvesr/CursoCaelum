@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
@@ -29,6 +30,7 @@ import br.com.alura.forum.security.JwtAuthenticationFilter;
 import br.com.alura.forum.security.jwt.TokenManager;
 import br.com.alura.forum.security.service.UsersService;
 
+@Order(2)
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
@@ -74,7 +76,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/**.html",  "/v2/api-docs", "/webjars/**", 
-				"/configuration/**", "/swagger-resources/**");
+				"/configuration/**", "/swagger-resources/**", "/css/**",
+				"/**.ico", "/js/**");
 	}
 	
 	private static class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
